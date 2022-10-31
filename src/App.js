@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
+import React, {useState} from "react"
+import Child from "./components/Child"
+function App(){
+  const [data, setData] = useState({
+    name:'?',
+    email:'?'
+  })
+  const sendData = (data) =>{
+    setData(data)
+  }
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>React Pass Data Child to Parent Component Example</h2>
+
+      <Child sendData={sendData}/>
+      <div>
+        The user data sent from Child Component:
+        <strong>{data.name + ':'+ data.email}</strong>
+      </div>
     </div>
-  );
+
+  )
 }
 
-export default App;
+export default App
